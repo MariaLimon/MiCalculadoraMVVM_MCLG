@@ -1,0 +1,14 @@
+﻿.naranja
+{
+    color:orangered;
+}
+
+button{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size:40;
+    background-color:white;
+}
+#igual {
+    background-color: orangered;
+    color:white;
+}
