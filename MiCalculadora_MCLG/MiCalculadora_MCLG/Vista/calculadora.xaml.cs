@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MiCalculadora_MCLG.VistaModelo;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ namespace MiCalculadora_MCLG.Vista
         public calculadora()
         {
             InitializeComponent();
+            BindingContext = new VMcalculadora(Navigation);
         }
     }
 }

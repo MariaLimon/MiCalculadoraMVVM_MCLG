@@ -3,53 +3,83 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MiCalculadora_MCLG.Vista.calculadora">
     <ContentPage.Resources>
-        <!--<StyleSheetExtension Source=""></StyleSheetExtension>-->
-
-        <Style TargetType="Button">
-            <Style.Triggers>
-                <Trigger TargetType="Button" Property="IsPressed" Value="True">
-                    <Setter Property="BackgroundColor" Value="Yellow"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
+        <StyleSheetExtension Source="/CSS/Stylesheet1.css"></StyleSheetExtension>
     </ContentPage.Resources>
     <AbsoluteLayout>
         <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,.32" AbsoluteLayout.LayoutFlags="All" Padding="24,0" Spacing="0" HorizontalOptions="End" VerticalOptions="End"></StackLayout>
 
-        <Frame AbsoluteLayout.LayoutBounds="0,1,1,.1" AbsoluteLayout.LayoutFlags="SizeProportional,YProportional"></Frame>
-        <Frame AbsoluteLayout.LayoutBounds="0,.95,1,.62" AbsoluteLayout.LayoutFlags="SizeProportional,YProportional"></Frame>
+        <Frame AbsoluteLayout.LayoutBounds="0,1,1,.1" AbsoluteLayout.LayoutFlags="SizeProportional,YProportional"/>
+        <Frame AbsoluteLayout.LayoutBounds="0,.95,1,.62" AbsoluteLayout.LayoutFlags="SizeProportional,YProportional"/>
 
-        <Label x:Name="resultadoPantalla" Text="0" HorizontalOptions="End" FontSize="36"></Label>
+        <Label x:Name="resultadoPantalla" Text="{Binding pantallaResultado}" HorizontalOptions="End" FontSize="36" Margin="25"/>
 
         <Grid AbsoluteLayout.LayoutBounds="0,1,1,.62" AbsoluteLayout.LayoutFlags="SizeProportional,YProportional" RowDefinitions="*,*,*,*,*" ColumnDefinitions="*,*,*,*" Padding="10" RowSpacing="4">
-            <Button Grid.Column="0" Grid.Row="0" CornerRadius="200" HeightRequest="200" StyleClass="naranja"  Text="AC" Clicked="Btn_Limpiar" />
+            <Button Grid.Column="0" Grid.Row="0" CornerRadius="200" HeightRequest="200" StyleClass="naranja"  Text="AC" Command="{Binding EliminarSimpcommand}"/>
 
-            <Button Grid.Column="0" Grid.Row="1" Text="7" CornerRadius="200" HeightRequest="200" Clicked="Btn_Numero"></Button>
-            <Button Grid.Column="0" Grid.Row="2" Text="4" CornerRadius="400" HeightRequest="200" Clicked="Btn_Numero"></Button>
-            <Button Grid.Column="0" Grid.Row="3" Text="1" CornerRadius="400" HeightRequest="200" Clicked="Btn_Numero"></Button>
+            <Button Grid.Column="0" Grid.Row="1" Text="7" CornerRadius="200" HeightRequest="200" Command="{Binding NumeroSimpcommand}" CommandParameter="7" />
+            <Button Grid.Column="0" Grid.Row="2" Text="4" CornerRadius="400" HeightRequest="200" Command="{Binding NumeroSimpcommand}" CommandParameter="4"/>
+            <Button Grid.Column="0" Grid.Row="3" Text="1" CornerRadius="400" HeightRequest="200" Command="{Binding NumeroSimpcommand}" CommandParameter="1"/>
 
-            <Button StyleClass="naranja" Grid.Column="0" Grid.Row="4" ImageSource="https://i.ibb.co/XpbZsy7/votar.png" CornerRadius="400" HeightRequest="200" Clicked="Btn_NoSirve"></Button>
-            <Button StyleClass="naranja" Grid.Column="1" Grid.Row="0" Text="⌫" CornerRadius="400" HeightRequest="200" Clicked="Btn_EliminarNumero"></Button>
+            <Button StyleClass="naranja" Grid.Column="0" Grid.Row="4" ImageSource="https://i.ibb.co/XpbZsy7/votar.png" CornerRadius="400" HeightRequest="200" />
+            <Button StyleClass="naranja" Grid.Column="1" Grid.Row="0" Text="⌫" CornerRadius="400" HeightRequest="200" Command="{Binding EliminarSimpcommand}"/>
 
-            <Button Grid.Column="1" Grid.Row="1" Text="8" CornerRadius="400" HeightRequest="200" Clicked="Btn_Numero"></Button>
-            <Button Grid.Column="1" Grid.Row="2" Text="5" CornerRadius="400" HeightRequest="200" Clicked="Btn_Numero"></Button>
-            <Button Grid.Column="1" Grid.Row="3" Text="2" CornerRadius="400" HeightRequest="200" Clicked="Btn_Numero"></Button>
-            <Button Grid.Column="1" Grid.Row="4" Text="0" CornerRadius="400" HeightRequest="200" Clicked="Btn_Numero"></Button>
+            <Button Grid.Column="1" Grid.Row="1" Text="8" CornerRadius="400" HeightRequest="200" Command="{Binding NumeroSimpcommand}" CommandParameter="8"/>
+            <Button Grid.Column="1" Grid.Row="2" Text="5" CornerRadius="400" HeightRequest="200" Command="{Binding NumeroSimpcommand}" CommandParameter="5"/>
+            <Button Grid.Column="1" Grid.Row="3" Text="2" CornerRadius="400" HeightRequest="200" Command="{Binding NumeroSimpcommand}" CommandParameter="2"/>
+            <Button Grid.Column="1" Grid.Row="4" Text="0" CornerRadius="400" HeightRequest="200" Command="{Binding NumeroSimpcommand}" CommandParameter="0"/>
 
-            <Button StyleClass="naranja" Grid.Column="2" Grid.Row="0" Text="%" CornerRadius="400" HeightRequest="200" Clicked="Btn_NoSirve"></Button>
+            <Button StyleClass="naranja" Grid.Column="2" Grid.Row="0" Text="%" CornerRadius="400" HeightRequest="200" />
 
-            <Button Grid.Column="2" Grid.Row="1" Text="9" CornerRadius="400" HeightRequest="200" Clicked="Btn_Numero"></Button>
-            <Button Grid.Column="2" Grid.Row="2" Text="6" CornerRadius="400" HeightRequest="200" Clicked="Btn_Numero"></Button>
-            <Button Grid.Column="2" Grid.Row="3" Text="3" CornerRadius="400" HeightRequest="200" Clicked="Btn_Numero"></Button>
+            <Button Grid.Column="2" Grid.Row="1" Text="9" CornerRadius="400" HeightRequest="200" Command="{Binding NumeroSimpcommand}" CommandParameter="9"/>
+            <Button Grid.Column="2" Grid.Row="2" Text="6" CornerRadius="400" HeightRequest="200" Command="{Binding NumeroSimpcommand}" CommandParameter="6"/>
+            <Button Grid.Column="2" Grid.Row="3" Text="3" CornerRadius="400" HeightRequest="200" Command="{Binding NumeroSimpcommand}" CommandParameter="3"/>
 
-            <Button Grid.Column="2" Grid.Row="4" Text="." CornerRadius="400" HeightRequest="200" Clicked="Btn_Punto"></Button>
+            <Button Grid.Column="2" Grid.Row="4" Text="." CornerRadius="400" HeightRequest="200" Command="{Binding PuntoSimpcommand}" CommandParameter="."/>
 
-            <Button StyleClass="naranja" Grid.Column="3" Grid.Row="0" Text="÷" CornerRadius="400" HeightRequest="200" Clicked="Btn_Operacion"></Button>
-            <Button StyleClass="naranja" Grid.Column="3" Grid.Row="1" Text="×" CornerRadius="400" HeightRequest="200" Clicked="Btn_Operacion"></Button>
-            <Button StyleClass="naranja" Grid.Column="3" Grid.Row="2" Text="-" CornerRadius="400" HeightRequest="200" Clicked="Btn_Operacion"></Button>
-            <Button StyleClass="naranja" Grid.Column="3" Grid.Row="3" Text="+" CornerRadius="400" HeightRequest="200" Clicked="Btn_Operacion"></Button>
+            <Button StyleClass="naranja" Grid.Column="3" Grid.Row="0" Text="÷" CornerRadius="400" HeightRequest="200" Command="{Binding OperadorSimpcommand}" CommandParameter="/" >
+                <Button.Triggers>
+                    <Trigger TargetType="Button"
+                 Property="IsPressed"
+                 Value="True">
+                        <Setter Property="BackgroundColor" Value="Orange"/>
+                        <Setter Property="TextColor" Value="White"/>
+                    </Trigger>
+                </Button.Triggers>
+            </Button>
+            <Button StyleClass="naranja" Grid.Column="3" Grid.Row="1" Text="×" CornerRadius="400" HeightRequest="200" Command="{Binding OperadorSimpcommand}" CommandParameter="*" >
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Style.Triggers>
+                            <DataTrigger TargetType="Button" Binding="{Binding MultiSimpcommand}" Value="True">
+                                <Setter Property="BackgroundColor" Value="Orange"/>
+                                <Setter Property="TextColor" Value="White"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Button StyleClass="naranja" Grid.Column="3" Grid.Row="2" Text="-" CornerRadius="400" HeightRequest="200" Command="{Binding OperadorSimpcommand}" CommandParameter="-" >
+                <Button.Triggers>
+                    <Trigger TargetType="Button"
+                 Property="IsPressed"
+                 Value="True">
+                        <Setter Property="BackgroundColor" Value="Orange"/>
+                        <Setter Property="TextColor" Value="White"/>
+                    </Trigger>
+                </Button.Triggers>
+            </Button>
+            <Button StyleClass="naranja" Grid.Column="3" Grid.Row="3" Text="+" CornerRadius="400" HeightRequest="200" Command="{Binding OperadorSimpcommand}" CommandParameter="+" >
+                <Button.Triggers>
+                    <Trigger TargetType="Button"
+                 Property="IsPressed"
+                 Value="True">
+                        <Setter Property="BackgroundColor" Value="Orange"/>
+                        <Setter Property="TextColor" Value="White"/>
+                    </Trigger>
+                </Button.Triggers>
+            </Button>
 
-            <Button StyleId="igual" Grid.Column="3" Grid.Row="4" Text="=" CornerRadius="400" HeightRequest="200" Clicked="Btn_Calcular"></Button>
+            <Button StyleId="igual" Grid.Column="3" Grid.Row="4" Text="=" CornerRadius="400" HeightRequest="200" Command="{Binding IgualSimpcommand}"/>
         </Grid>
     </AbsoluteLayout>
 

@@ -40,7 +40,7 @@ namespace MiCalculadora_MCLG
         {
             numeroActual = string.Empty;
             operacion = string.Empty;
-            resultadoPantalla.Text = "0";
+            resultadoPantalla.Text = "";
         }
         private void Btn_Operacion(object sender, EventArgs e)
         {
